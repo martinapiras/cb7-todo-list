@@ -5,7 +5,6 @@ export const getList = async () => {
   try {
     if (res.ok) {
       const listData = await res.json();
-      console.log("(GET) Tutto ok!");
 
       return listData;
     }
@@ -78,14 +77,14 @@ export const createNewTodo = (newTodo) => {
   listItemEl.textContent = newTodo;
   listItemEl.id = Math.floor(Math.random() * (1500 - 151) + 151);
 
-  if (darkModeImgEl.classList.length === 2) {
+  if (darkModeImgEl.classList.contains("darkMode-active")) {
     listItemEl.classList.toggle("darkMode-active");
   }
 
   listItemEl.addEventListener("click", (e) => {
     e.target.classList.toggle("completed");
 
-    if (e.target.classList.length >= 2) {
+    if (e.target.classList.contains("completed") == false) {
       deleteTodo(`${e.target.id}`);
     }
   });
@@ -109,7 +108,9 @@ export const postTodo = async (todoText) => {
     const data = await res.json();
     console.log("POST successful: ");
     return console.log(data);
-  } catch (error) {}
+  } catch (error) {
+    console.error("Some parameters may be missing");
+  }
 };
 
 export const deleteTodo = async (todoId) => {
@@ -120,12 +121,10 @@ export const deleteTodo = async (todoId) => {
     if (todoId <= 150) {
       alert("Deleted successfully");
       const data = await res.json();
-
       return console.log(data);
     }
-    throw new Error(`Couldn't find any element with id ${todoId}`);
+    throw new Error(`Couldn't find any elements with id ${todoId}`);
   } catch (error) {
-    alert("Couldn't delete element");
     return console.error(error);
   }
 };

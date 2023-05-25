@@ -58,6 +58,7 @@ todoFormEl.addEventListener("submit", (e) => {
   }
 
   const allTodos = document.querySelectorAll(".todo-new");
+
   darkModeBtnEl.addEventListener("click", () => {
     allTodos.forEach((todo) => todo.classList.toggle("darkMode-active"));
   });

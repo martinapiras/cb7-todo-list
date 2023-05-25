@@ -172,4 +172,14 @@ h1.darkMode-active {
     width: 80%;
     cursor: pointer;
   }
+
+  .todo:hover,
+  .todo-new:hover {
+    box-shadow: 0 0 8px var(--color-text);
+  }
+
+  .todo:hover.darkMode-active,
+  .todo-new:hover.darkMode-active {
+    box-shadow: 0 0 8px var(--color-text-darkmode);
+  }
 }
