@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Satisfy&display=swap");
+@import "colors.css";
+
+@counter-style white-hearts {
+  system: cyclic;
+  symbols: "\1F90D";
+  suffix: " ";
+}
+
+@counter-style blue-hearts {
+  system: cyclic;
+  symbols: "\1F499";
+  suffix: " ";
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Caveat, cursive;
+  font-size: 1.3rem;
+  color: var(--color-text);
+  transition: all 0.35s;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: var(--color-secondary);
+  margin-bottom: 10px;
+}
+
+body.darkMode-active {
+  background-color: var(--color-main-darkmode);
+}
+
+.darkMode {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  transition: all 0.35s;
+  cursor: pointer;
+}
+
+.darkMode img {
+  filter: invert(12%) sepia(19%) saturate(5390%) hue-rotate(201deg)
+    brightness(98%) contrast(101%);
+  transition: all 0.35s;
+}
+
+.darkMode img.darkMode-active {
+  filter: invert(85%) sepia(2%) saturate(6148%) hue-rotate(191deg)
+    brightness(102%) contrast(98%);
+  transition: all 0.35s;
+}
+
+h1 {
+  margin-top: 15px;
+  font-family: Satisfy, cursive;
+  font-size: 2.5rem;
+}
+
+h1.darkMode-active {
+  color: var(--color-text-darkmode);
+}
+
+.listWrapper {
+  width: 95vw;
+  padding: 10px;
+  background-color: var(--color-main);
+  box-shadow: 0 0 8px var(--color-text);
+  border-radius: 16px;
+  margin-bottom: 15px;
+}
+
+.listWrapper.darkMode-active {
+  background-color: var(--color-secondary-darkmode);
+  box-shadow: 0;
+}
+
+.list {
+  list-style: white-hearts;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.todo,
+.todo-new {
+  background-color: var(--color-secondary);
+  border-radius: 16px;
+  width: 75%;
+  height: fit-content;
+  padding: 4px 16px;
+  transition: all 0.35s;
+}
+
+.todo.darkMode-active,
+.todo-new.darkMode-active {
+  background-color: var(--color-main-darkmode);
+  color: var(--color-text-darkmode);
+}
+
+.todo:active,
+.todo-new:active {
+  transform: scale(1.2);
+}
+
+.completed {
+  text-decoration: line-through;
+  list-style: blue-hearts;
+}
+
+.addTodo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.newTodoLabel.darkMode-active {
+  color: var(--color-text-darkmode);
+}
+
+.newTodo {
+  background-color: var(--color-main);
+  border: 0;
+  border-radius: 10px;
+  padding: 4px 10px;
+}
+
+.newTodo.darkMode-active {
+  background-color: var(--color-secondary-darkmode);
+  color: var(--color-text-darkmode);
+}
+
+.newTodo:focus {
+  outline: var(--color-text);
+  box-shadow: 0 0 8px var(--color-text);
+}
+
+.newTodo:focus.darkMode-active {
+  outline: var(--color-text-darkmode);
+  box-shadow: 0 0 8px var(--color-text-darkmode);
+}
+
+.newTodoSubmit {
+  background-color: var(--color-secondary);
+  border: 0;
+  box-shadow: 0 0 4px var(--color-text);
+  border-radius: 10px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.newTodoSubmit.darkMode-active {
+  background-color: var(--color-secondary-darkmode);
+  color: var(--color-text-darkmode);
+}
+
+@media screen and (min-width: 768px) {
+  .listWrapper {
+    width: 40vw;
+  }
+
+  .todo,
+  .todo-new {
+    width: 80%;
+    cursor: pointer;
+  }
+}
